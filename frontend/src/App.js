@@ -1,57 +1,36 @@
 import React from 'react';
-import data from './data.js';
+import { BrowserRouter, Route } from 'react-router-dom';
+import CartScreen from './screnns/CartScreen';
+import HomeScreen from './screnns/HomeScreen';
+import ProductScreen from './screnns/ProductScreen';
 
 function App() {
   return (
-    <div className="grid-container">
-    <header className="row">
-        <div>
-            <a className="brand" href="/"> amazona</a>
+      <BrowserRouter>
+            <div className="grid-container">
+
+            <header className="row">
+                <div>
+                    <a className="brand" href="/"> amazona</a>
+                </div>
+
+                <div>
+                    <a href="/card"> Cart</a>
+                    <a href="/signin"> Sign In</a>
+                </div>
+            </header>
+
+            <main>
+                <Route path="/cart/:id?" component={CartScreen}></Route>
+                <Route path="/product/:id" component={ProductScreen}></Route>
+                <Route path="/" component={HomeScreen} exact ></Route> 
+            </main>
+
+            <footer className="row center">
+                All right reserved 
+            </footer>
         </div>
-
-        <div>
-            <a href="/card"> Cart</a>
-            <a href="/signin"> Sign In</a>
-        </div>
-    </header>
-
-    <main>
-        <div className="row center">
-
-            {
-                data.products.map(product => (
-                    <div key={product._id} className="card">
-                        <a href={`/product/${product._id}`}>
-                            <img className="medium" 
-                            src={product.image} 
-                            alt={product.name} />
-                        </a>
-                        <div className="card-body">
-                            <a href={`/product/${product._id}`} >
-                                <h2> {product.name} </h2>
-                            </a>
-                            <div className="rating">
-                                <span><i className="fa fa-star" aria-hidden="true"></i></span>
-                                <span><i className="fa fa-star" aria-hidden="true"></i></span>
-                                <span><i className="fa fa-star" aria-hidden="true"></i></span>
-                                <span><i className="fa fa-star" aria-hidden="true"></i></span>
-                                <span><i className="fa fa-star" aria-hidden="true"></i></span>
-                            </div>
-                            <div className="price">
-                                ${product.price}
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
-          
-        </div>
-    </main>
-
-    <footer className="row center">
-        All right reserved 
-    </footer>
-</div>
+    </BrowserRouter>
   );
 }
 
