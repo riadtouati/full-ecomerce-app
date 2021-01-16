@@ -35,7 +35,7 @@ export default function ProductScreen(props) {
   const { loading, error, product} = productDetails;
   
   useEffect(()=> {
-    dispatch(detailsProduct(productId) );
+    dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
 
   const addToCardHandler = () => {
@@ -113,7 +113,11 @@ export default function ProductScreen(props) {
                     </div>
                   </li>
                     <li>
-                      <button onClick={addToCardHandler} className="primary block">Add to Cart</button>
+                      <button 
+                        onClick={addToCardHandler} 
+                        className="primary block">
+                          Add to Cart
+                      </button>
                     </li>
                   </>
                 )
