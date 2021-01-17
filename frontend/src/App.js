@@ -5,10 +5,10 @@ import {  signout } from './actions/userActions';
 import CartScreen from './screnns/CartScreen';
 import HomeScreen from './screnns/HomeScreen';
 import PaymentMethodeScreen from './screnns/PaymentMethodeScreen';
+import PlaceOrderScreen from './screnns/PlaceOrderScreen';
 import ProductScreen from './screnns/ProductScreen';
 import RegisterScreen from './screnns/RegisterScreen';
 import ShippingAddressScreen from './screnns/ShippingAddressScreen';
-/*import RegisterScreen from './screnns/RegisterScreen';*/
 import SigninScreen from './screnns/SigninScreen';
 
 function App() {
@@ -68,6 +68,7 @@ function App() {
                 <Route path="/register"  component={RegisterScreen}></Route>
                 <Route path="/shipping" component={ShippingAddressScreen}></Route>
                 <Route path="/payment" component={PaymentMethodeScreen}></Route>
+                <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                 <Route path="/" component={HomeScreen} exact ></Route> 
             </main>
 

@@ -5,10 +5,17 @@ import CheckoutSteps from '../components/CheckoutSteps'
 
 export default function PaymentMethodeScreen(props) {
 
-    const cart = useSelector((state) => state.cart)
-    const shippingAddress = cart;
+    
+    const userSignin = useSelector(state => state.userSignin);
+    const {userInfo} = userSignin;
+    const cart = useSelector(state => state.cart);
+    const {shippingAddress} = cart;
 
-    if(shippingAddress.address !== null) {
+    if(!userInfo) {
+        props.history.push('/signin');
+    }
+
+    if(!shippingAddress.fullName) {
         props.history.push('/shipping');
     }
 
@@ -20,11 +27,8 @@ export default function PaymentMethodeScreen(props) {
         e.preventDefault();
         dispatch(savePaymentMethode(paymentMethod));
         
-        props.history.push('/placehorder');
+        props.history.push('/placeorder');
     };
-
-
-
 
     return (
 
@@ -43,7 +47,7 @@ export default function PaymentMethodeScreen(props) {
                             id="paypal" 
                             value="PayPal" 
                             name="paymentMethod" 
-                            required checked onChange={(e) => setPaymentMethode(e.target.value)}
+                            required checked  onChange={(e) => setPaymentMethode(e.target.value)}
                         ></input>
                         <label htmlFor="paypal"> PayPal</label>
                     </div>
