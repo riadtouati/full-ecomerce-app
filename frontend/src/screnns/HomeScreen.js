@@ -10,9 +10,10 @@ export default function HomeScreen() {
     const productList = useSelector((state) => state.productList );
     const { loading, error, products } = productList;
     
+    
     useEffect(() => {
        dispatch(listProducts());
-  }, []);
+  }, [dispatch]);
 
 
     return (
@@ -24,9 +25,11 @@ export default function HomeScreen() {
         ) : ( 
             <div>
                 <div className="row center">
-                    {products.map(product => (
-                        <Product key={product._id} product={product}></Product>  
-                    ))}
+                    {
+                        products.map(product => (
+                            <Product key={product._id} product={product}></Product>  
+                        ))
+                    }       
                 </div>
             </div>
         )}
